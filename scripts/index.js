@@ -1,4 +1,4 @@
 'use strict';
 /* global $ */
 
-$(alert('jQuery and JavaScript are connected!'));
+$(console.log('jQuery and JavaScript are connected!'));

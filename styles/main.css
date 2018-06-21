@@ -1,3 +1,91 @@
+html {
+  box-sizing: border-box;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
 h1 {
-  color: red;
+  text-align: center;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+h3 {
+  margin: 0;
+}
+input {
+  display: inline;
+}
+.new-item-input {
+  width: 100%;
+}
+.bookmark-element {
+  margin-top: 40px;
+  border: solid 1px black;
+  border-radius: 5px;
+}
+.star-ratings {
+  display: inline;
+}
+.star-rating {
+  cursor: pointer;
+}
+/* .rating li {
+  display: inline;
+} */
+.delete-bookmark {
+  float: right;
+}
+.btn {
+  display: inline-block;
+  color: inherit;
+  background-color: lightgray;
+  border: solid 1px darkgray;
+  padding: 2px 5px;
+  text-decoration: none;
+}
+.btn-delete {
+  height: 50px;
+  border-radius: 10%;
+  float: right;
+}
+button:hover, input[type=radio]:hover {
+  cursor: pointer;
+}
+.bookmark-title {
+  background-color: lightgray;
+  padding: 5px;
+}
+.bookmark-props {
+  background-color: lavender;
+  padding: 5px;
+}
+.bookmark-details {
+  background-color: lightcyan;
+  padding: 20px;
+}
+.hidden {
+  display: none;
+}
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+legend {
+  font-size: 0;
+}
+.new-bookmark {
+  border: solid 1px black;
+  border-radius: 5px;
+  padding: 20px;
+}
+.create-bookmark, .filter-bookmarks {
+  padding: 5px;
+  margin: 20px;
+}
+.new-description {
+  height: 100px;
 }

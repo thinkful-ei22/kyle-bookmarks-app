@@ -6,11 +6,127 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Bookmarks App | Kyle Bowen</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="styles/float-grid.css">
   <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-  <h1>Hello, Bookmarks App!</h1>
+  <h1>My Bookmarks</h1>
+
+  <div class="row">
+    <div class="col-3">
+      <button class="js-create-bookmark create-bookmark">ADD BOOKMARK</button>
+    </div>
+    <div class="col-3">
+      <select id="filter-bookmarks" class="filter-bookmarks" title="Filter bookmarks">
+        <option value="" selected disabled hidden>Minimum Rating</option>
+        <option value="0">Show All</option>
+        <option value="5">&starf;&starf;&starf;&starf;&starf;</option>
+        <option value="4">&starf;&starf;&starf;&starf;&star;</option>
+        <option value="3">&starf;&starf;&starf;&star;&star;</option>
+        <option value="2">&starf;&starf;&star;&star;&star;</option>
+        <option value="1">&starf;&star;&star;&star;&star;</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12" class="new-bookmark">
+      <form id="new-bookmark" class="new-bookmark">
+        <h2>Create a Bookmark:</h2>
+        <div class="row">
+          <div class="col-6">
+            <label for="new-title">Title:</label>
+          </div>
+          <div class="col-6">
+            <input type="text" name="title" id="new-title" class="new-item-input" placeholder="Add a name">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <label for="new-url">Url:</label>
+          </div>
+          <div class="col-6">
+            <input type="url" name="url" id="new-url" class="new-item-input" placeholder="https://...">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <label for="new-rating">Rating:</label>
+          </div>
+          <div class="col-6">
+            <fieldset class="star-ratings">
+              <legend>Rating</legend>
+                <input type="radio" value="1" id="new-bookmark-1" name="rating" form="new-bookmark">
+                <label for="new-bookmark-1" class="star-rating">&star;</label>
+                <input type="radio" value="2" id="new-bookmark-2" name="rating" form="new-bookmark">
+                <label for="new-bookmark-2" class="star-rating">&star;</label>
+                <input type="radio" value="3" id="new-bookmark-3" name="rating" form="new-bookmark">
+                <label for="new-bookmark-3" class="star-rating">&star;</label>
+                <input type="radio" value="4" id="new-bookmark-4" name="rating" form="new-bookmark">
+                <label for="new-bookmark-4" class="star-rating">&star;</label>
+                <input type="radio" value="5" id="new-bookmark-5" name="rating" form="new-bookmark">
+                <label for="new-bookmark-5" class="star-rating">&star;</label>
+            </fieldset>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <label for="new-description">Description:</label>
+          </div>
+          <div class="col-6">
+            <textarea name="description" id="new-description" class="new-item-input new-description" placeholder="Description, notes, etc."></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <ul class="error-message">
+              <li>Title must be longer than 5 characters</li>
+            </ul>
+          </div>
+          <div class="col-3">
+            <button type="submit">Create</button>
+            <button>Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <ul class="bookmark-list">
+    <li class="js-bookmark-element bookmark-element"  data-item-id="interpolated-Item-ID">
+      <div class="bookmark-title">
+        <h3>Bookmark name 1</h3>
+      </div>
+      <div class="bookmark-details"> <!-- toggle 'hidden' here to hide div -->
+        <p>here are some details about bookmark name 1. there could be lots of details or there could only be a few.</p>
+        <a class="js-site-link btn" href="#" target="_blank">Visit Site</a>
+      </div>
+      <form class="js-bookmark-props bookmark-props" id="interpolated-Item-ID-form">
+        <div class="row">
+          <div class="col-6">
+            <fieldset class="star-ratings">
+              <legend>Rating</legend>
+                <input type="radio" value="1" id="interpolated-Item-ID-1" name="rating" hidden>
+                <label for="interpolated-Item-ID-1" class="star-rating">&starf;</label>
+                <input type="radio" value="2" id="interpolated-Item-ID-2" name="rating" hidden>
+                <label for="interpolated-Item-ID-2" class="star-rating">&starf;</label>
+                <input type="radio" value="3" id="interpolated-Item-ID-3" name="rating" hidden>
+                <label for="interpolated-Item-ID-3" class="star-rating">&starf;</label>
+                <input type="radio" value="4" id="interpolated-Item-ID-4" name="rating" hidden checked="checked">
+                <label for="interpolated-Item-ID-4" class="star-rating">&starf;</label>
+                <input type="radio" value="5" id="interpolated-Item-ID-5" name="rating" hidden>
+                <label for="interpolated-Item-ID-5" class="star-rating">&star;</label>
+            </fieldset>
+          </div>
+          <div class="col-3 offset-3">
+            <button class="far fa-trash-alt btn-delete"><span class="btn-label">Delete</span></button>
+          </div>
+        </div>
+      </form>
+    </li>
+  </ul>
   
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js"></script>
