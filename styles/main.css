@@ -118,6 +118,6 @@ input, textarea {
 input[type="radio"] {
   margin: 5px 5px 20px 20px;
 }
-form button {
+form#new-bookmark button {
   padding: 10px;
 }
