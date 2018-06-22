@@ -36,7 +36,7 @@ const bookmarkList = (function() {
         if (store.error) {
           toast = `
             <div class="col-6">
-              <section class="error-message">
+              <section class="error-message" role="region">
                 <button id="cancel-error">X</button>
                 <p>${store.error}</p>
               </section>
