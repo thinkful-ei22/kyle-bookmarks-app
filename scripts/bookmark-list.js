@@ -10,7 +10,7 @@ const bookmarkList = (function() {
       return `
         <div class="row">
           <div class="col-3">
-            <button class="js-create-bookmark create-bookmark">ADD BOOKMARK</button>
+            <button class="js-create-bookmark create-bookmark">Add Bookmark</button>
           </div>
           <div class="col-3">
             <select id="filter-bookmarks" class="filter-bookmarks" title="Filter bookmarks">
