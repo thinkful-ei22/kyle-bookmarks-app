@@ -104,6 +104,7 @@ const bookmarkList = (function() {
 
   const renderList = function() {
     let bookmarks = store.bookmarks;
+    let filteredBookmarks = bookmarks.filter(bookmark => bookmark.rating >= store.filter);
 
     const starRating = function(bookmark) {
       // TODO: refactor to use a for loop based off the number 
@@ -165,7 +166,7 @@ const bookmarkList = (function() {
     };
 
     let bookmarkListHtml = '';
-    bookmarkListHtml += generateBookmarkListString(bookmarks);
+    bookmarkListHtml += generateBookmarkListString(filteredBookmarks);
 
     $('.bookmark-list').html(bookmarkListHtml);
   };
@@ -235,12 +236,22 @@ const bookmarkList = (function() {
     });
   };
 
+  const handleFilterSelection = function() {
+    $('.top-section').on('change', '#filter-bookmarks', function(event) {
+      const filterValue = $(event.target).val();
+
+      store.setFilter(filterValue);
+      render();
+    });
+  };
+
   const bindEventListeners = function() {
     handleNewBookmarkSubmit();
     handleDeleteBookmarkClicked();
     handleBookmarkItemClicked();
     handleAddBookmarkClicked();
     handleAddBookmarkCancel();
+    handleFilterSelection();
   };
 
   return {

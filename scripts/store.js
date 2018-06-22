@@ -21,6 +21,10 @@ const store = (function() {
     this.adding = !this.adding;
   };
 
+  const setFilter = function(num) {
+    this.filter = num;
+  };
+
   return {
     bookmarks: [],
     adding: true,
@@ -30,6 +34,7 @@ const store = (function() {
     addBookmark,
     findAndDelete,
     toggleExpanded,
-    toggleAdding
+    toggleAdding,
+    setFilter
   };
 }());
