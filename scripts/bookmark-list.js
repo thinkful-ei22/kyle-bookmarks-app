@@ -127,12 +127,13 @@ const bookmarkList = (function() {
       // console.log('`generateBookmarkString` was passed ', bookmark);
       const description = (bookmark.desc) ? bookmark.desc : '';
       const hideUnlessExpanded = (!bookmark.expanded) ? 'hidden' : '';
+      const expandedToggleIcon = (!bookmark.expanded) ? '<span class="fas fa-plus-circle"></span>': '<span class="fas fa-minus-circle"></span>';
 
       return `
         <li class="js-bookmark-element bookmark-element"  data-item-id="${bookmark.id}">
-          <a href="" class="bookmark-title-clickable">
+          <a href="" class="js-bookmark-title-clickable bookmark-title-clickable">
             <div class="bookmark-title">
-              <h3>${bookmark.title}</h3>
+              <h3>${expandedToggleIcon} ${bookmark.title}</h3>
             </div>
           </a>
           <div class="bookmark-details ${hideUnlessExpanded}"> <!-- toggle 'hidden' here to hide div -->
@@ -207,8 +208,8 @@ const bookmarkList = (function() {
   };
 
   const handleBookmarkItemClicked = function() {
-    $('.bookmark-list').on('click', '.bookmark-element', function(event) {
-      event.preventDefault();  // ?? Do i need to make btn so accessible ??
+    $('.bookmark-list').on('click', '.js-bookmark-title-clickable', function(event) {
+      event.preventDefault();
       const currentId = $(event.target).closest('li').attr('data-item-id');
 
       store.toggleExpanded(currentId);
