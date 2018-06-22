@@ -29,6 +29,7 @@ const bookmarkList = (function() {
 
     const generateNewForm = function() {
       const hideUnlessAdding = (store.adding) ? 'hidden' : '';
+      
       const generateErrorToast = function() {
         let toast = '';
 
@@ -41,7 +42,7 @@ const bookmarkList = (function() {
               </section>
             </div>
           `;
-        };
+        }
         return toast;
       };
 
@@ -61,7 +62,7 @@ const bookmarkList = (function() {
                   <label for="new-title">Title:</label>
                 </div>
                 <div class="col-6">
-                  <input type="text" name="title" id="new-title" class="new-item-input" placeholder="Add a name" required>
+                  <input type="text" name="title" id="new-title" class="new-item-input" placeholder="Add a name">
                 </div>
               </div>
               <div class="row">
@@ -69,7 +70,7 @@ const bookmarkList = (function() {
                   <label for="new-url">Url:</label>
                 </div>
                 <div class="col-6">
-                  <input type="url" name="url" id="new-url" class="new-item-input" placeholder="https://...">
+                  <input type="text" name="url" id="new-url" class="new-item-input" placeholder="https://...">
                 </div>
               </div>
               <div class="row">
@@ -102,7 +103,7 @@ const bookmarkList = (function() {
               </div>
               <div class="row">
                 <div class="col-3 offset-6">
-                  <button type="submit">Create</button>
+                  <button type="submit" class="js-create-bm-submit">Create</button>
                   <button class="js-new-bm-cancel">Cancel</button>
                 </div>
               </div>
@@ -122,7 +123,7 @@ const bookmarkList = (function() {
     let bookmarks = store.bookmarks;
     let filteredBookmarks = bookmarks.filter(bookmark => bookmark.rating >= store.filter);
 
-    const starRating = function(bookmark) {
+    const generateStarRating = function(bookmark) {
       // TODO: refactor to use a for loop based off the number 
       //   in bookmark.rating to change the string
       switch(bookmark.rating) {
@@ -160,7 +161,7 @@ const bookmarkList = (function() {
           <form class="js-bookmark-props bookmark-props" id="${bookmark.id}-form">
             <div class="row">
               <div class="col-6">
-                <p>${starRating(bookmark)}</p>
+                <p>${generateStarRating(bookmark)}</p>
               </div>
               <div class="col-3 offset-3">
                 <button class="far fa-trash-alt btn-delete"><span class="btn-label">Delete</span></button>
@@ -195,6 +196,8 @@ const bookmarkList = (function() {
   const handleNewBookmarkSubmit = function() {
     $('.top-section').on('submit', '#new-bookmark', function(event) {
       event.preventDefault();
+      console.log('`handleNewBookmarkSubmit` ran');
+
 
       const newBookmark = $(event.target).serializeJSON();
       $('#new-bookmark')[0].reset();
@@ -212,6 +215,16 @@ const bookmarkList = (function() {
       };
 
       api.createBookmark(newBookmark, onSuccess, onError);
+    });
+  };
+
+  const handleErrorCancelClicked = function() {
+    $('.top-section').on('click', '#cancel-error', function(event) {
+      event.preventDefault();
+      console.log('`handleErrorCancelClicked` ran');
+
+      store.setError(null);
+      render();
     });
   };
 
@@ -269,6 +282,7 @@ const bookmarkList = (function() {
 
   const bindEventListeners = function() {
     handleNewBookmarkSubmit();
+    handleErrorCancelClicked();
     handleDeleteBookmarkClicked();
     handleBookmarkItemClicked();
     handleAddBookmarkClicked();
