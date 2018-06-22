@@ -87,7 +87,7 @@ const bookmarkList = (function() {
                 </div>
                 <div class="col-3">
                   <button type="submit">Create</button>
-                  <button>Cancel</button>
+                  <button class="js-new-bm-cancel">Cancel</button>
                 </div>
               </div>
             </form>
@@ -222,7 +222,15 @@ const bookmarkList = (function() {
       store.toggleAdding();
       render();
     });
+  };
 
+  const handleAddBookmarkCancel = function() {
+    $('.top-section').on('click', '.js-new-bm-cancel', function(event) {
+      event.preventDefault();
+
+      store.toggleAdding();
+      render();
+    });
   };
 
   const bindEventListeners = function() {
@@ -230,6 +238,7 @@ const bookmarkList = (function() {
     handleDeleteBookmarkClicked();
     handleBookmarkItemClicked();
     handleAddBookmarkClicked();
+    handleAddBookmarkCancel();
   };
 
   return {
