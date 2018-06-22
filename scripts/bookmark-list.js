@@ -7,6 +7,22 @@ const bookmarkList = (function() {
   const renderList = function() {
     let bookmarks = store.bookmarks;
 
+    const starRating = function(bookmark) {
+      switch(bookmark.rating) {
+      case 1:
+        return '&starf;&star;&star;&star;&star;';
+      case 2:
+        return '&starf;&starf;&star;&star;&star;';
+      case 3:
+        return '&starf;&starf;&starf;&star;&star;';
+      case 4:
+        return '&starf;&starf;&starf;&starf;&star;';
+      case 5:
+        return '&starf;&starf;&starf;&starf;&starf;';
+      }
+      return '&star;&star;&star;&star;&star;';
+    };
+
     const generateBookmarkString = function(bookmark) {
       const description = (bookmark.desc) ? bookmark.desc : '';
 
@@ -22,19 +38,7 @@ const bookmarkList = (function() {
           <form class="js-bookmark-props bookmark-props" id="${bookmark.id}-form">
             <div class="row">
               <div class="col-6">
-                <fieldset class="star-ratings">
-                  <legend>Rating</legend>
-                  <input type="radio" value="1" id="${bookmark.id}-1" name="rating" hidden>
-                  <label for="${bookmark.id}-1" class="star-rating">&starf;</label>
-                  <input type="radio" value="2" id="${bookmark.id}-2" name="rating" hidden>
-                  <label for="${bookmark.id}-2" class="star-rating">&starf;</label>
-                  <input type="radio" value="3" id="${bookmark.id}-3" name="rating" hidden>
-                  <label for="${bookmark.id}-3" class="star-rating">&starf;</label>
-                  <input type="radio" value="4" id="${bookmark.id}-4" name="rating" hidden checked="checked">
-                  <label for="${bookmark.id}-4" class="star-rating">&starf;</label>
-                  <input type="radio" value="5" id="${bookmark.id}-5" name="rating" hidden>
-                  <label for="${bookmark.id}-5" class="star-rating">&star;</label>
-                </fieldset>
+                <p>${starRating(bookmark)}</p>
               </div>
               <div class="col-3 offset-3">
                 <button class="far fa-trash-alt btn-delete"><span class="btn-label">Delete</span></button>
@@ -60,9 +64,14 @@ const bookmarkList = (function() {
 
     $('.bookmark-list').html(bookmarkListHtml);
   };
+
+  const render = function() {
+    renderList();
+  };
+
   const bindEventListeners = function() {};
 
   return {
-    renderList, bindEventListeners
+    render, bindEventListeners
   };
 }());

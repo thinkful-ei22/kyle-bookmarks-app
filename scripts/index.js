@@ -3,10 +3,10 @@
 
 $(function() {
   bookmarkList.bindEventListeners();
-  bookmarkList.renderList();
+  bookmarkList.render();
 
   api.getBookmarks((bookmarks) => {
     bookmarks.forEach((bookmark) => store.addBookmark(bookmark));
-    bookmarkList.renderList();
+    bookmarkList.render();
   });
 });

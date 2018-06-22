@@ -9,6 +9,9 @@ const store = (function() {
 
   return {
     bookmarks: [],
+    adding: true,
+    filter: 0,
+    error: null,
 
     addBookmark
   };

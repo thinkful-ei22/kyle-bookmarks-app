@@ -57,7 +57,7 @@ button:hover, input[type=radio]:hover {
 }
 .bookmark-title {
   background-color: lightgray;
-  padding: 5px;
+  padding: 5px 20px;
 }
 .bookmark-props {
   background-color: lavender;
@@ -88,4 +88,16 @@ legend {
 }
 .new-description {
   height: 100px;
+}
+.error-message {
+  background-color: lightpink;
+  display: block;
+  padding: 20px 20px;
+  position: relative;
+}
+#cancel-error {
+  border: solid 1px red;
+  position: relative;
+  top: -15px;
+  left: -15px;
 }

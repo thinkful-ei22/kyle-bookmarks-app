@@ -5,17 +5,23 @@
 const api = (function() {
   const BASE_URL = 'https://thinkful-list-api.herokuapp.com/mysdirector/bookmarks';
 
-  const getBookmarks = function(callback) {
+  const getBookmarks = function(onSuccess) {
     $.ajax({
       url: BASE_URL,
       method: 'GET',
       contentType: 'application/json',
-      success: callback
+      success: onSuccess
     });
   };
 
-  const createBookmark = function() {
-
+  const createBookmark = function(newBookmark, onSuccess) {
+    $.ajax({
+      url: BASE_URL,
+      method: 'POST',
+      contentType: 'application/json',
+      data: newBookmark,
+      success: onSuccess
+    });
   };
 
 
