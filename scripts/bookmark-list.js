@@ -182,7 +182,8 @@ const bookmarkList = (function() {
       $('#new-bookmark')[0].reset();
 
       const onSuccess = function(returnedBookmark) {
-        store.addBookmark(returnedBookmark);  
+        store.addBookmark(returnedBookmark);
+        store.toggleAdding();
         render();
       };
 
