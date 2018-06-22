@@ -1,5 +1,5 @@
 'use strict';
-/* global $, store */
+/* global $, store, api */
 
 // eslint-disable-next-line no-unused-vars
 const bookmarkList = (function() {
@@ -24,6 +24,7 @@ const bookmarkList = (function() {
     };
 
     const generateBookmarkString = function(bookmark) {
+      // console.log('`generateBookmarkString` was passed ', bookmark);
       const description = (bookmark.desc) ? bookmark.desc : '';
 
       return `
@@ -69,7 +70,25 @@ const bookmarkList = (function() {
     renderList();
   };
 
-  const bindEventListeners = function() {};
+  const handleNewBookmarkSubmit = function() {
+    $('#new-bookmark').submit(function(event) {
+      event.preventDefault();
+
+      const newBookmark = $(event.target).serializeJSON();
+      $('#new-bookmark')[0].reset();
+
+      const onSuccess = function(returnedBookmark) {
+        store.addBookmark(returnedBookmark);  
+        render();
+      };
+
+      api.createBookmark(newBookmark, onSuccess);
+    });
+  };
+
+  const bindEventListeners = function() {
+    handleNewBookmarkSubmit();
+  };
 
   return {
     render, bindEventListeners

@@ -4,7 +4,8 @@
 const store = (function() {
 
   const addBookmark = function(bookmark) {
-    this.bookmarks.push(bookmark);
+    // console.log('store.addBookmark was just passed ', bookmark);
+    this.bookmarks.unshift(bookmark);
   };
 
   return {
