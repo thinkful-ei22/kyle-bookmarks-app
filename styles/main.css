@@ -45,7 +45,8 @@ input {
   text-decoration: none;
 }
 .btn-delete {
-  height: 50px;
+  height: 30px;
+  width: 30px;
   border-radius: 10%;
   float: right;
 }
@@ -101,4 +102,11 @@ legend {
   position: relative;
   top: -15px;
   left: -15px;
+}
+.btn-label-delete {
+  font-size: 0;
+}
+.rating-display {
+  margin: 0;
+  padding: 5px;
 }

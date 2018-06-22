@@ -159,10 +159,10 @@ const bookmarkList = (function() {
           <form class="js-bookmark-props bookmark-props" id="${bookmark.id}-form">
             <div class="row">
               <div class="col-6">
-                <p>${generateStarRating(bookmark)}</p>
+                <p class="rating-display">${generateStarRating(bookmark)}</p>
               </div>
               <div class="col-3 offset-3">
-                <button class="far fa-trash-alt btn-delete"><span class="btn-label">Delete</span></button>
+                <button class="far fa-trash-alt btn-delete"><span class="btn-label btn-label-delete">Delete</span></button>
               </div>
             </div>
           </form>
