@@ -16,11 +16,11 @@ const bookmarkList = (function() {
             <select id="filter-bookmarks" class="filter-bookmarks" title="Filter bookmarks">
               <option value="" selected disabled hidden>Minimum Rating</option>
               <option value="0">Show All</option>
-              <option value="5">&starf;&starf;&starf;&starf;&starf;</option>
-              <option value="4">&starf;&starf;&starf;&starf;&star;</option>
-              <option value="3">&starf;&starf;&starf;&star;&star;</option>
-              <option value="2">&starf;&starf;&star;&star;&star;</option>
-              <option value="1">&starf;&star;&star;&star;&star;</option>
+              <option value="5">5 stars</span></option>
+              <option value="4">4 stars +</option>
+              <option value="3">3 stars +</option>
+              <option value="2">2 stars +</option>
+              <option value="1">1 star +</option>
             </select>
           </div>
         </div>
