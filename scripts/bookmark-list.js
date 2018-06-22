@@ -4,6 +4,103 @@
 // eslint-disable-next-line no-unused-vars
 const bookmarkList = (function() {
   
+  const renderControls = function() {
+
+    const generateControls = function() {
+      return `
+        <div class="row">
+          <div class="col-3">
+            <button class="js-create-bookmark create-bookmark">ADD BOOKMARK</button>
+          </div>
+          <div class="col-3">
+            <select id="filter-bookmarks" class="filter-bookmarks" title="Filter bookmarks">
+              <option value="" selected disabled hidden>Minimum Rating</option>
+              <option value="0">Show All</option>
+              <option value="5">&starf;&starf;&starf;&starf;&starf;</option>
+              <option value="4">&starf;&starf;&starf;&starf;&star;</option>
+              <option value="3">&starf;&starf;&starf;&star;&star;</option>
+              <option value="2">&starf;&starf;&star;&star;&star;</option>
+              <option value="1">&starf;&star;&star;&star;&star;</option>
+            </select>
+          </div>
+        </div>
+      `;
+    };
+
+    const generateNewForm = function() {
+      return `
+        <div class="row">
+          <div class="col-12" class="new-bookmark">
+            <form id="new-bookmark" class="new-bookmark">
+              <h2>Create a Bookmark:</h2>
+              <div class="row">
+                <div class="col-6">
+                  <label for="new-title">Title:</label>
+                </div>
+                <div class="col-6">
+                  <input type="text" name="title" id="new-title" class="new-item-input" placeholder="Add a name">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <label for="new-url">Url:</label>
+                </div>
+                <div class="col-6">
+                  <input type="url" name="url" id="new-url" class="new-item-input" placeholder="https://...">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <label for="new-rating">Rating:</label>
+                </div>
+                <div class="col-6">
+                  <fieldset class="star-ratings">
+                    <legend>Rating</legend>
+                    <input type="radio" value="1" id="new-bookmark-1" name="rating" form="new-bookmark">
+                    <label for="new-bookmark-1" class="star-rating">1</label>
+                    <input type="radio" value="2" id="new-bookmark-2" name="rating" form="new-bookmark">
+                    <label for="new-bookmark-2" class="star-rating">2</label>
+                    <input type="radio" value="3" id="new-bookmark-3" name="rating" form="new-bookmark">
+                    <label for="new-bookmark-3" class="star-rating">3</label>
+                    <input type="radio" value="4" id="new-bookmark-4" name="rating" form="new-bookmark">
+                    <label for="new-bookmark-4" class="star-rating">4</label>
+                    <input type="radio" value="5" id="new-bookmark-5" name="rating" form="new-bookmark">
+                    <label for="new-bookmark-5" class="star-rating">5</label>
+                  </fieldset>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <label for="new-description">Description:</label>
+                </div>
+                <div class="col-6">
+                  <textarea name="desc" id="new-description" class="new-item-input new-description" placeholder="Description, notes, etc."></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <section class="error-message">
+                    <button id="cancel-error">X</button>
+                    <p>Title must be longer than 5 characters</p>
+                  </section>
+                </div>
+                <div class="col-3">
+                  <button type="submit">Create</button>
+                  <button>Cancel</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      `;
+    };
+
+    let html = '';
+    html += generateControls();
+    html += generateNewForm();
+    $('.top-section').html(html);
+  };
+
   const renderList = function() {
     let bookmarks = store.bookmarks;
 
@@ -67,6 +164,7 @@ const bookmarkList = (function() {
   };
 
   const render = function() {
+    renderControls();
     renderList();
   };
 
