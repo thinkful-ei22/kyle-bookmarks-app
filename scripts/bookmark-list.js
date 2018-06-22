@@ -33,7 +33,18 @@ const bookmarkList = (function() {
         <div class="row ${hideUnlessAdding}">
           <div class="col-12" class="new-bookmark">
             <form id="new-bookmark" class="new-bookmark">
-              <h2>Create a Bookmark:</h2>
+              <div class="row">
+                <div class="col-6">
+                  <h2>Create a Bookmark:</h2>
+                </div>
+                <div class="col-6">
+                  <section class="error-message">
+                    <button id="cancel-error">X</button>
+                    <p>Title must be longer than 5 characters</p>
+                  </section>
+                </div>
+              </div>
+              
               <div class="row">
                 <div class="col-6">
                   <label for="new-title">Title:</label>
@@ -79,13 +90,7 @@ const bookmarkList = (function() {
                 </div>
               </div>
               <div class="row">
-                <div class="col-6">
-                  <section class="error-message">
-                    <button id="cancel-error">X</button>
-                    <p>Title must be longer than 5 characters</p>
-                  </section>
-                </div>
-                <div class="col-3">
+                <div class="col-3 offset-6">
                   <button type="submit">Create</button>
                   <button class="js-new-bm-cancel">Cancel</button>
                 </div>
