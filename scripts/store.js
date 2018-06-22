@@ -12,6 +12,11 @@ const store = (function() {
     this.bookmarks = this.bookmarks.filter(bookmark => bookmark.id !== id);
   };
 
+  const toggleExpanded = function(id) {
+    const bookmark = this.bookmarks.filter(bookmark => bookmark.id === id);
+    bookmark[0].expanded = !bookmark[0].expanded;
+  };
+
   return {
     bookmarks: [],
     adding: true,
@@ -19,6 +24,7 @@ const store = (function() {
     error: null,
 
     addBookmark,
-    findAndDelete
+    findAndDelete,
+    toggleExpanded
   };
 }());
