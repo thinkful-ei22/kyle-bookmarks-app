@@ -33,9 +33,6 @@ input {
 .star-rating {
   cursor: pointer;
 }
-/* .rating li {
-  display: inline;
-} */
 .delete-bookmark {
   float: right;
 }
