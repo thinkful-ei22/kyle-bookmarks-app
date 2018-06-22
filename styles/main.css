@@ -75,6 +75,7 @@ button:hover, input[type=radio]:hover {
 fieldset {
   margin: 0;
   padding: 0;
+  border: none;
 }
 legend {
   font-size: 0;
@@ -109,4 +110,14 @@ legend {
 .rating-display {
   margin: 0;
   padding: 5px;
+}
+input, textarea {
+  padding: 15px;
+  margin: 5px 0 20px 0;
+}
+input[type="radio"] {
+  margin: 5px 5px 20px 20px;
+}
+form button {
+  padding: 10px;
 }

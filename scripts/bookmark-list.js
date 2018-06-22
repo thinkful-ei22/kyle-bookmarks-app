@@ -58,27 +58,21 @@ const bookmarkList = (function() {
               </div>
               
               <div class="row">
-                <div class="col-6">
+                <div class="col-6 offset-3">
                   <label for="new-title">Title:</label>
-                </div>
-                <div class="col-6">
                   <input type="text" name="title" id="new-title" class="new-item-input" placeholder="Add a name">
                 </div>
               </div>
               <div class="row">
-                <div class="col-6">
+                <div class="col-6 offset-3">
                   <label for="new-url">Url:</label>
-                </div>
-                <div class="col-6">
                   <input type="text" name="url" id="new-url" class="new-item-input" placeholder="https://...">
                 </div>
               </div>
               <div class="row">
-                <div class="col-6">
+                <div class="col-6 offset-3">
                   <label for="new-rating">Rating:</label>
-                </div>
-                <div class="col-6">
-                  <fieldset class="star-ratings">
+                  <fieldset class="star-ratings" id="new-rating">
                     <legend>Rating</legend>
                     <input type="radio" value="1" id="new-bookmark-1" name="rating" form="new-bookmark">
                     <label for="new-bookmark-1" class="star-rating">1</label>
@@ -94,15 +88,13 @@ const bookmarkList = (function() {
                 </div>
               </div>
               <div class="row">
-                <div class="col-6">
+                <div class="col-6 offset-3">
                   <label for="new-description">Description:</label>
-                </div>
-                <div class="col-6">
                   <textarea name="desc" id="new-description" class="new-item-input new-description" placeholder="Description, notes, etc."></textarea>
                 </div>
               </div>
               <div class="row">
-                <div class="col-3 offset-6">
+                <div class="col-3 offset-3">
                   <button type="submit" class="js-create-bm-submit">Create</button>
                   <button class="js-new-bm-cancel">Cancel</button>
                 </div>
