@@ -1,4 +1,12 @@
 'use strict';
-/* global $ */
+/* global $, bookmarkList, api, store */
 
-$(console.log('jQuery and JavaScript are connected!'));
+$(function() {
+  bookmarkList.bindEventListeners();
+  bookmarkList.renderList();
+
+  api.getBookmarks((bookmarks) => {
+    bookmarks.forEach((bookmark) => store.addBookmark(bookmark));
+    bookmarkList.renderList();
+  });
+});
