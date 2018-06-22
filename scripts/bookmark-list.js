@@ -28,8 +28,9 @@ const bookmarkList = (function() {
     };
 
     const generateNewForm = function() {
+      const hideUnlessAdding = (store.adding) ? 'hidden' : '';
       return `
-        <div class="row">
+        <div class="row ${hideUnlessAdding}">
           <div class="col-12" class="new-bookmark">
             <form id="new-bookmark" class="new-bookmark">
               <h2>Create a Bookmark:</h2>
@@ -214,10 +215,21 @@ const bookmarkList = (function() {
     });
   };
 
+  const handleAddBookmarkClicked = function() {
+    $('.top-section').on('click', '.js-create-bookmark', function(event) {
+      event.preventDefault();
+
+      store.toggleAdding();
+      render();
+    });
+
+  };
+
   const bindEventListeners = function() {
     handleNewBookmarkSubmit();
     handleDeleteBookmarkClicked();
     handleBookmarkItemClicked();
+    handleAddBookmarkClicked();
   };
 
   return {

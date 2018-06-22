@@ -17,6 +17,10 @@ const store = (function() {
     bookmark[0].expanded = !bookmark[0].expanded;
   };
 
+  const toggleAdding = function() {
+    this.adding = !this.adding;
+  };
+
   return {
     bookmarks: [],
     adding: true,
@@ -25,6 +29,7 @@ const store = (function() {
 
     addBookmark,
     findAndDelete,
-    toggleExpanded
+    toggleExpanded,
+    toggleAdding
   };
 }());
