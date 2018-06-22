@@ -105,6 +105,8 @@ const bookmarkList = (function() {
     let bookmarks = store.bookmarks;
 
     const starRating = function(bookmark) {
+      // TODO: refactor to use a for loop based off the number 
+      //   in bookmark.rating to change the string
       switch(bookmark.rating) {
       case 1:
         return '&starf;&star;&star;&star;&star;';
