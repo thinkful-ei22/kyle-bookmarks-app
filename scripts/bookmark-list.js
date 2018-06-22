@@ -71,11 +71,11 @@ const bookmarkList = (function() {
   };
 
   const handleNewBookmarkSubmit = function() {
-    $('#new-bookmark').submit(function(event) {
+    $('.top-section').on('submit', '#new-bookmark', function(event) {
       event.preventDefault();
+      $('#new-bookmark')[0].reset();
 
       const newBookmark = $(event.target).serializeJSON();
-      $('#new-bookmark')[0].reset();
 
       const onSuccess = function(returnedBookmark) {
         store.addBookmark(returnedBookmark);  
@@ -86,8 +86,24 @@ const bookmarkList = (function() {
     });
   };
 
+  const handleDeleteBookmarkClicked = function() {
+    $('.bookmark-list').on('click', '.btn-delete', function(event) {
+      event.preventDefault();
+
+      const currentId = $(event.target).closest('li').attr('data-item-id');
+
+      const onSuccess = function() {
+        store.findAndDelete(currentId);
+        render();
+      };
+
+      api.deleteBookmark(currentId, onSuccess);
+    });
+  };
+
   const bindEventListeners = function() {
     handleNewBookmarkSubmit();
+    handleDeleteBookmarkClicked();
   };
 
   return {

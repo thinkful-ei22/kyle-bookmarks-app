@@ -5,7 +5,11 @@ const store = (function() {
 
   const addBookmark = function(bookmark) {
     // console.log('store.addBookmark was just passed ', bookmark);
-    this.bookmarks.unshift(bookmark);
+    this.bookmarks.push(bookmark);
+  };
+
+  const findAndDelete = function(id) {
+    this.bookmarks = this.bookmarks.filter(bookmark => bookmark.id !== id);
   };
 
   return {
@@ -14,6 +18,7 @@ const store = (function() {
     filter: 0,
     error: null,
 
-    addBookmark
+    addBookmark,
+    findAndDelete
   };
 }());
