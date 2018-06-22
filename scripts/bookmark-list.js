@@ -124,8 +124,6 @@ const bookmarkList = (function() {
     let filteredBookmarks = bookmarks.filter(bookmark => bookmark.rating >= store.filter);
 
     const generateStarRating = function(bookmark) {
-      // TODO: refactor to use a for loop based off the number 
-      //   in bookmark.rating to change the string
       switch(bookmark.rating) {
       case 1:
         return '&starf;&star;&star;&star;&star;';
