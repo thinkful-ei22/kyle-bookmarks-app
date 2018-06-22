@@ -171,15 +171,16 @@ const bookmarkList = (function() {
   const handleNewBookmarkSubmit = function() {
     $('.top-section').on('submit', '#new-bookmark', function(event) {
       event.preventDefault();
-      $('#new-bookmark')[0].reset();
 
       const newBookmark = $(event.target).serializeJSON();
-
+      $('#new-bookmark')[0].reset();
+      
       const onSuccess = function(returnedBookmark) {
         store.addBookmark(returnedBookmark);  
         render();
       };
 
+      console.log(newBookmark);
       api.createBookmark(newBookmark, onSuccess);
     });
   };
