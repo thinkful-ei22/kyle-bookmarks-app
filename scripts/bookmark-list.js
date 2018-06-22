@@ -129,9 +129,11 @@ const bookmarkList = (function() {
 
       return `
         <li class="js-bookmark-element bookmark-element"  data-item-id="${bookmark.id}">
-          <div class="bookmark-title">
-            <h3>${bookmark.title}</h3>
-          </div>
+          <a href="" class="bookmark-title-clickable">
+            <div class="bookmark-title">
+              <h3>${bookmark.title}</h3>
+            </div>
+          </a>
           <div class="bookmark-details ${hideUnlessExpanded}"> <!-- toggle 'hidden' here to hide div -->
             <p>${description}</p>
             <a class="js-site-link btn" href="${bookmark.url}" target="_blank">Visit Site</a>
@@ -204,9 +206,8 @@ const bookmarkList = (function() {
 
   const handleBookmarkItemClicked = function() {
     $('.bookmark-list').on('click', '.bookmark-element', function(event) {
-      // event.preventDefault();  ?? Do i need to make btn so accessible ??
+      event.preventDefault();  // ?? Do i need to make btn so accessible ??
       const currentId = $(event.target).closest('li').attr('data-item-id');
-      // console.log(currentId);
 
       store.toggleExpanded(currentId);
       render();

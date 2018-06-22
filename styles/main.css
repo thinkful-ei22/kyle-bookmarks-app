@@ -59,6 +59,10 @@ button:hover, input[type=radio]:hover {
   background-color: lightgray;
   padding: 5px 20px;
 }
+.bookmark-title-clickable {
+  text-decoration: none;
+  color: inherit;
+}
 .bookmark-props {
   background-color: lavender;
   padding: 5px;
