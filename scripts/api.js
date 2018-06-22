@@ -14,13 +14,14 @@ const api = (function() {
     });
   };
 
-  const createBookmark = function(newBookmark, onSuccess) {
+  const createBookmark = function(newBookmark, onSuccess, onError) {
     $.ajax({
       url: BASE_URL,
       method: 'POST',
       contentType: 'application/json',
       data: newBookmark,
-      success: onSuccess
+      success: onSuccess,
+      error: onError
     });
   };
 

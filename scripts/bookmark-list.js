@@ -29,6 +29,22 @@ const bookmarkList = (function() {
 
     const generateNewForm = function() {
       const hideUnlessAdding = (store.adding) ? 'hidden' : '';
+      const generateErrorToast = function() {
+        let toast = '';
+
+        if (store.error) {
+          toast = `
+            <div class="col-6">
+              <section class="error-message">
+                <button id="cancel-error">X</button>
+                <p>${store.error}</p>
+              </section>
+            </div>
+          `;
+        };
+        return toast;
+      };
+
       return `
         <div class="row ${hideUnlessAdding}">
           <div class="col-12" class="new-bookmark">
@@ -37,12 +53,7 @@ const bookmarkList = (function() {
                 <div class="col-6">
                   <h2>Create a Bookmark:</h2>
                 </div>
-                <div class="col-6">
-                  <section class="error-message">
-                    <button id="cancel-error">X</button>
-                    <p>Title must be longer than 5 characters</p>
-                  </section>
-                </div>
+                ${generateErrorToast()}
               </div>
               
               <div class="row">
@@ -50,7 +61,7 @@ const bookmarkList = (function() {
                   <label for="new-title">Title:</label>
                 </div>
                 <div class="col-6">
-                  <input type="text" name="title" id="new-title" class="new-item-input" placeholder="Add a name">
+                  <input type="text" name="title" id="new-title" class="new-item-input" placeholder="Add a name" required>
                 </div>
               </div>
               <div class="row">
@@ -191,10 +202,16 @@ const bookmarkList = (function() {
       const onSuccess = function(returnedBookmark) {
         store.addBookmark(returnedBookmark);
         store.toggleAdding();
+        store.setError(null);
         render();
       };
 
-      api.createBookmark(newBookmark, onSuccess);
+      const onError = function(err) {
+        store.setError(err.responseJSON.message);
+        render();
+      };
+
+      api.createBookmark(newBookmark, onSuccess, onError);
     });
   };
 

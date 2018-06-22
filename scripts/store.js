@@ -25,6 +25,10 @@ const store = (function() {
     this.filter = num;
   };
 
+  const setError = function(message) {
+    this.error = message;
+  };
+
   return {
     bookmarks: [],
     adding: true,
@@ -35,6 +39,7 @@ const store = (function() {
     findAndDelete,
     toggleExpanded,
     toggleAdding,
-    setFilter
+    setFilter,
+    setError
   };
 }());
