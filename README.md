@@ -1,5 +1,5 @@
 # Fundamentals Final Project
-You can visit the live version of this project [here](https://thinkful-ei22.github.io/kyle-bookmarks-app/).
+You can use a live version of this project [here](https://thinkful-ei22.github.io/kyle-bookmarks-app/).
 
 ## Build a Bookmarks App
 
